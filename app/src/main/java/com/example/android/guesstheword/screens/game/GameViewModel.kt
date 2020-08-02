@@ -24,6 +24,8 @@ import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
 
+
+
     // The current _word
     private val _word = MutableLiveData<String>()
 
@@ -108,7 +110,6 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         if (wordList.isEmpty()) {
             onGameFinish()
-
         } else {
             //Select and remove a _word from the list
             _word.value = wordList.removeAt(0)
@@ -124,7 +125,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun onGameFinishComplete() {
-        _eventGameFinish.value = false
+        _eventGameFinish.value = true
     }
 
 }

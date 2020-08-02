@@ -72,6 +72,8 @@ class GameFragment : Fragment() {
         binding.correctButton.setOnClickListener { onCorrect() }
         binding.skipButton.setOnClickListener { onSkip() }
         binding.endGameButton.setOnClickListener { onEndGame() }
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+        })
         return binding.root
     }
 
@@ -97,9 +99,15 @@ class GameFragment : Fragment() {
 
     private fun updateWordText() {
         binding.wordText.text = viewModel.word.value
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+            binding.wordText.text = newWord
+        })
     }
 
     private fun updateScoreText() {
         binding.scoreText.text = viewModel.score.value.toString()
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
     }
 }
